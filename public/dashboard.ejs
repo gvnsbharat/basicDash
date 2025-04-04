@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #2980b9, #6dd5fa);
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            margin-top: 40px;
+        }
+        .input-box input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .input-box button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ff7eb3;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+        .input-box button:hover {
+            background: #ff577f;
+        }
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ff4b5c;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            background: #d63031;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Animated Welcome Text -->
+        <h1 id="welcome-text">Welcome, <%= user.FullName %>!</h1>
+        
+        <!-- Animated Text Box -->
+        <div class="input-box">
+            <input type="text" placeholder="Enter something..." />
+            <button>Submit</button>
+        </div>
+
+        <!-- Logout Button -->
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+          </form>
+          
+    </div>
+
+    <script>
+        // Welcome text animation
+        anime({
+            targets: '#welcome-text',
+            opacity: [0, 1],
+            translateY: [-50, 0],
+            easing: 'easeOutExpo',
+            duration: 2000
+        });
+
+        // Button hover effect
+        document.querySelector(".logout-btn").addEventListener("mouseover", function() {
+            anime({
+                targets: ".logout-btn",
+                scale: [1, 1.1],
+                duration: 300
+            });
+        });
+
+        document.querySelector(".logout-btn").addEventListener("mouseleave", function() {
+            anime({
+                targets: ".logout-btn",
+                scale: [1.1, 1],
+                duration: 300
+            });
+        });
+    </script>
+</body>
+</html>
